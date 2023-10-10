@@ -10,8 +10,8 @@
 
 ```bash
 cd todolist
-npm run build // 번들 생성하기
-npm run start // dev 서버 실행하기
+npm build // 번들 생성하기
+npm start // dev 서버 실행하기
 ```
 
 <br>
