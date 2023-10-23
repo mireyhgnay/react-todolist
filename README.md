@@ -14,6 +14,8 @@
 
 <br>
 
+### 프로젝트 실행하기
+
 ```bash
 cd todolist
 npm build // 번들 생성하기
