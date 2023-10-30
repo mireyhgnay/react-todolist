@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useTodoState } from "../TodoContext";
 
 const TodoHeadBlock = styled.header`
   padding-top: 48px;
@@ -28,11 +29,23 @@ const TodoHeadBlock = styled.header`
   }
 `;
 function TodoHead() {
+  const todos = useTodoState();
+  const undoneTodos = todos.filter((todo) => !todo.done); // !done 인 항목만 골라요오
+
+  const today = new Date();
+  // toLocaleString() 메소드는 날짜를 언어별로 구분하여 나타내는 문자열을 반환한다.
+  const dateString = today.toLocaleDateString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const dayName = today.toLocaleDateString("ko-KR", { weekday: "long" });
+
   return (
     <TodoHeadBlock>
-      <h1 className="header__date">2023년 10월 23일</h1>
-      <div className="header__day">월요일</div>
-      <div className="header__list-num">할 일 2개 남음</div>
+      <h1 className="header__date">{dateString}</h1>
+      <div className="header__day">{dayName}</div>
+      <div className="header__list-num">할 일 {undoneTodos.length}개 남음</div>
     </TodoHeadBlock>
   );
 }
